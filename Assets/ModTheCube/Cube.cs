@@ -5,19 +5,25 @@ using UnityEngine;
 public class Cube : MonoBehaviour
 {
     public MeshRenderer Renderer;
+    private Material material;
     
     void Start()
     {
         transform.position = new Vector3(3, 4, 1);
-        transform.localScale = Vector3.one * 1.3f;
+        transform.localScale = Vector3.one * Random.RandomRange(2.0f, 4.0f); //alerado o tamanho
         
-        Material material = Renderer.material;
-        
-        material.color = new Color(0.5f, 1.0f, 0.3f, 0.4f);
+        material = Renderer.material;
+         
     }
     
     void Update()
     {
         transform.Rotate(10.0f * Time.deltaTime, 0.0f, 0.0f);
+        float r = Random.RandomRange(0.0f, 1.0f);
+        float g = Random.RandomRange(0.0f, 1.0f);
+        float b = Random.RandomRange(0.0f, 1.0f);
+        float a = Random.RandomRange(0.0f, 1.0f);
+
+        material.color = new Color(r, g, b, a);// alterado a cor
     }
 }
